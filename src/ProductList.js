@@ -25,7 +25,7 @@ export default function ProductList() {
         .then(response => response.json())
         .then(data => {
           const token = data.token;
-          // Save the token in state or localStorage
+          // ..Save the token in state or localStorage
           setToken(token);
         })
         .catch(error => {
