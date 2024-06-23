@@ -10,31 +10,47 @@ export default function ProductList() {
     let [input, setInput] = useState('')
     let [token, setToken] = useState('')
 
-    useEffect(() => {
-        fetch('http://localhost:8081/authenticate',{
-            method: "POST",
-            body: JSON.stringify({username: 'admin', password: '9876'})
-        })
-        .then(response => {
-            return response.json();
-        })
-        .then(data => setToken(data))
-        console.log('token: ' + token)
-    },[])
-
-    useEffect(() => {
-        fetch('http://localhost:8081/product/all',{
-            headers: {
-              'Authorization': token,
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            method: "GET"
-        })
+    const loginData = {
+        username: 'admin',
+        password: '9876'
+      };
+    
+      fetch('http://localhost:8081/authenticate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(loginData)
+      })
         .then(response => response.json())
-        .then(data => setProductList(data))
-        console.log(productList)
-    },[token])
+        .then(data => {
+          const token = data.token;
+          // Save the token in state or localStorage
+          setToken(token);
+        })
+        .catch(error => {
+          console.error('Login failed:', error);
+        });
+
+        useEffect(() => {
+            if (token) {
+              fetch('http://localhost:8081/product/all', {
+                headers: {
+                  'Authorization': `Bearer ${token}`,
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                }
+              })
+                .then(response => response.json())
+                .then(data => {
+                  // Set the productList state with the received data
+                  setProductList(data);
+                })
+                .catch(error => {
+                  console.error('Error fetching product list:', error);
+                });
+            }
+          }, [token]);
 
     useEffect(()=>{
         console.log(input)
