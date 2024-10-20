@@ -80,34 +80,10 @@ export default function ProductList() {
     return (
     <div>
         <div>
-            <header>
-                
-            </header>
-            <input type="text" onChange={e=>handleChange(e)} />
-            <Title mainTitle='請選擇要的產品'/>
-            {product} <button onClick={handleClick}>Button</button>
-            {!show && <button onClick={handleShow}>Show product</button>}
-            {show && <button onClick={handleHide}>Hide product</button>}
-            {/* 如加入public folder, 要加process.env.PUBLIC_URL */}
-            <Container>
-              <Row>
-                { show && productList.map(product => {
-                return (
-                  <Col xs={6} sm={4} md={3}>
-                    <div key={product.id}>
-                        {product.name}<br/>
-                        {product.price}<br/>
-                        <Link to={"/product/" + product.id}><img src={process.env.PUBLIC_URL + '/img/' + product.image} alt={product.name} className="productBorder"/></Link><br/>
-                        {product.description}<br/>
-                        <QuantityBtn />
-                    </div>
-                    </Col>
-                    
-                )
-            })}
-              </Row>
-            </Container>
             
+            <header className='sticky-top'>
+                <span>Lavander</span>
+            </header>
         </div>
     </div>
   )

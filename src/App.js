@@ -1,3 +1,4 @@
+import HomePage from './HomePage';
 import Checkout from './Checkout';
 import ProductDetail from './ProductDetail';
 import ProductList from './ProductList';
@@ -7,8 +8,9 @@ function App() {
   return (
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<ProductList/>} />
+          <Route path='/' element={<HomePage/>} />
           <Route path='/checkout' element={<Checkout/>} />
+          <Route path='/productList' element={<ProductList/>} />
           <Route path='/product' element={<ProductDetail/>} >
             <Route path=':id' element={<ProductDetail/>} />
           </Route>
