@@ -12,7 +12,7 @@ export default function ProductList() {
 
     const loginData = {
         username: 'admin',
-        password: '9876'
+        password: '654321'
       };
     
       fetch('http://localhost:8081/authenticate', {
