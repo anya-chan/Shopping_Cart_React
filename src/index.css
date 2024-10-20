@@ -13,7 +13,11 @@ code {
 }
 
 .productBorder{
-  border: aquamarine solid 4px;
-  margin: 2px 2px;
+  border: #db604d solid 4px;
+  width: 310px;
+}
+
+img {
+  height: 180px;
   width: 310px;
 }
