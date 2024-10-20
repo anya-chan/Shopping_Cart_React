@@ -6,7 +6,7 @@ export default function ProductDetail() {
     let params = useParams()
   return (
     <div>
-        <Title mainTitle={params.id+'產品資料'}/>
+        <Title />
         #{params.id}
         <div>ProductDetail</div>
         <Link to="/checkout">checkout</Link>

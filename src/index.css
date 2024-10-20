@@ -6,9 +6,9 @@
 header {
   font-family: NotoSerifDisplay;
   font-weight:black;
-  color: rgb(82, 59, 91);
+  color: rgb(92, 73, 70);
   font-size: xx-large;
-  background-color: #e2aef8;
+  background-color: #dc8374;
   height: 100px;
   display: flex; /* Use flexbox for centering */
   align-items: center; /* Vertically center the content */
@@ -28,4 +28,14 @@ code {
 img {
   height: 180px;
   width: 310px;
+}
+
+.custom-navbar {
+  height: 100px;
+  font-size:large;
+}
+
+.custom-link {
+  text-decoration: none;
+  color: rgb(92, 73, 70);
 }
