@@ -11,6 +11,7 @@ export default function ProductDetail() {
         <div>ProductDetail</div>
         <Link to="/checkout">checkout</Link>
         <br/>
+        <Link className='mx-1' to="/productList">回到上頁</Link>
         <Link to="/">回到首頁</Link>
     </div>
     
