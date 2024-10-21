@@ -90,24 +90,28 @@ export default function ProductList() {
             
             {/* 如加入public folder, 要加process.env.PUBLIC_URL */}
             <Container>
-              <Row>
-                { show && productList.map(product => {
+            <Row>
+              
+              { show && productList.map(product => {
                 return (
-                  <Col xs={6} sm={4} md={3}>
+                  <Col >
                     <div key={product.id}>
-                        {product.name}<br/>
+                      <Link to={"/product/" + product.id}><img src={process.env.PUBLIC_URL + '/img/' + product.image} alt={product.name} className="productBorder"/>
+                      <Container style={{backgroundColor: "#FFF"}}>
+                            {product.name}<br/>
+                          </Container>
+                      </Link><br/>
                         {product.price}<br/>
-                        <Link to={"/product/" + product.id}><img src={process.env.PUBLIC_URL + '/img/' + product.image} alt={product.name} className="productBorder"/></Link><br/>
+                        
                         {product.description}<br/>
                         <QuantityBtn />
                     </div>
-                    </Col>
-                    
+                  </Col>
                 )
             })}
-              </Row>
+              
+            </Row>
             </Container>
-            
         </div>
     </div>
   )
