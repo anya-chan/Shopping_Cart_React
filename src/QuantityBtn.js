@@ -1,5 +1,7 @@
 import React from 'react'
 import {useState, useEffect} from 'react' //React Hook
+import {Carousel, Image, Nav, Navbar, Container, Row, Col, Button, Alert, Breadcrumb, Cart} from 'react-bootstrap'
+
 
 export default function QuantityBtn() {
     let [numInCart, setNumInCart] = useState(0)
@@ -13,11 +15,11 @@ export default function QuantityBtn() {
     <div>
         {
             (numInCart === 0) ?
-            <div onClick={handleAdd}>加入購物車</div> :
+            <Button className='btn btn-light' onClick={handleAdd}>加入購物車</Button> :
             <div>
-                <span onClick={handleSubtract}>-</span>
-                {numInCart}件
-                <span onClick={handleAdd}>+</span>
+                <Button className='btn btn-dark' onClick={handleSubtract}>-</Button>
+                <span class="mx-1">{numInCart}件</span>
+                <Button className='btn btn-dark' onClick={handleAdd}>+</Button>
             </div>
 
         }

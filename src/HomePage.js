@@ -10,10 +10,15 @@ import {Carousel, Image, Nav, Navbar, Container, Row, Col, Button, Alert, Breadc
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 
 export default function HomePage({ productList }) {
+  const [index, setIndex] = useState(0);
+  const handleSelect = (selectedIndex) => {
+    setIndex(selectedIndex);
+  };
+
     return (
     <div>
         <Title />
-        <Carousel data-bs-theme="dark" interval={1000}>
+        <Carousel activeIndex={index} data-bs-theme="dark" interval={3000} onSelect={handleSelect}>
         { productList.map(product => {
                 return (
                   <Carousel.Item key={product.id}>

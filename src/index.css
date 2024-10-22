@@ -25,7 +25,6 @@ code {
   width: 310px;
 }
 
-
 .custom-navbar {
   height: 100px;
   font-size:large;
@@ -40,4 +39,16 @@ code {
   display: flex wrap;
   justify-content: space-between;
   column-gap: 1rem;
+}
+
+.carousel .carousel-indicators button{
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.carousel img{
+  max-height: 400px; /* Adjust the height as necessary */
+  width: 100%; /* Ensure it takes the full width */
+  object-fit: cover; /* Maintain aspect ratio */
 }

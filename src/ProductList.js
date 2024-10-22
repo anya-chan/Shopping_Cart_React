@@ -50,8 +50,8 @@ export default function ProductList({ productList }) {
               { show && productList.map(product => {
                 return (
                   <Col key={product.id} xs={6} sm={4} md={3} className="g-3">
-                      <Link to={"/product/" + product.id}>
-                      <Image src={process.env.PUBLIC_URL + '/img/' + product.image} alt={product.name} className="productBorder" fluid />
+                      <Link className="d-flex flex-column justify-content-center" to={"/product/" + product.id}>
+                      <Image style={{ height:"100%", width:"100%" }} src={process.env.PUBLIC_URL + '/img/' + product.image} alt={product.name} className="productBorder" fluid />
                       <Container>
                             {product.name}<br/>
                       </Container>
