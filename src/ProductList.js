@@ -4,55 +4,11 @@ import {Link} from 'react-router-dom'
 import Title from './Title'
 import QuantityBtn from './QuantityBtn'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Container, Row, Col, Button, Alert, Breadcrumb, Cart} from 'react-bootstrap'
+import {Image, Container, Row, Col, Button, Alert, Breadcrumb, Cart} from 'react-bootstrap'
 
-export default function ProductList() {
+export default function ProductList({ productList }) {
   
-    let [productList, setProductList] = useState([])
     let [input, setInput] = useState('')
-    let [token, setToken] = useState('')
-
-    const loginData = {
-        username: 'admin',
-        password: '654321'
-      };
-    
-      fetch('http://localhost:8081/authenticate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(loginData)
-      })
-        .then(response => response.json())
-        .then(data => {
-          const token = data.token;
-          // ..Save the token in state or localStorage
-          setToken(token);
-        })
-        .catch(error => {
-          console.error('Login failed:', error);
-        });
-
-        useEffect(() => {
-            if (token) {
-              fetch('http://localhost:8081/product/all', {
-                headers: {
-                  'Authorization': `Bearer ${token}`,
-                  'Accept': 'application/json',
-                  'Content-Type': 'application/json'
-                }
-              })
-                .then(response => response.json())
-                .then(data => {
-                  // Set the productList state with the received data
-                  setProductList(data);
-                })
-                .catch(error => {
-                  console.error('Error fetching product list:', error);
-                });
-            }
-          }, [token]);
 
     useEffect(()=>{
         console.log(input)
@@ -89,23 +45,20 @@ export default function ProductList() {
              */}
             
             {/* 如加入public folder, 要加process.env.PUBLIC_URL */}
-            <Container>
+            <Container fluid>
             <Row>
-              
               { show && productList.map(product => {
                 return (
-                  <Col >
-                    <div key={product.id}>
-                      <Link to={"/product/" + product.id}><img src={process.env.PUBLIC_URL + '/img/' + product.image} alt={product.name} className="productBorder"/>
-                      <Container style={{backgroundColor: "#FFF"}}>
+                  <Col key={product.id} xs={6} sm={4} md={3} className="g-3">
+                      <Link to={"/product/" + product.id}>
+                      <Image src={process.env.PUBLIC_URL + '/img/' + product.image} alt={product.name} className="productBorder" fluid />
+                      <Container>
                             {product.name}<br/>
-                          </Container>
+                      </Container>
                       </Link><br/>
                         {product.price}<br/>
-                        
                         {product.description}<br/>
                         <QuantityBtn />
-                    </div>
                   </Col>
                 )
             })}
